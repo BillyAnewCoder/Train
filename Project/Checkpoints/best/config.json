@@ -1,0 +1,41 @@
+{
+  "model": {
+    "vocab_size": 32000,
+    "hidden_size": 2048,
+    "num_layers": 32,
+    "num_attention_heads": 32,
+    "intermediate_size": 8192,
+    "max_position_embeddings": 4096,
+    "layer_norm_eps": 1e-5,
+    "dropout": 0.1,
+    "attention_dropout": 0.1,
+    "activation_function": "gelu"
+  },
+  "moe": {
+    "num_experts": 64,
+    "top_k": 2,
+    "expert_hidden_size": 4096,
+    "load_balance_loss_coeff": 0.01,
+    "gate_temperature": 1.0,
+    "gate_temperature_schedule": {
+      "initial": 2.0,
+      "final": 0.5,
+      "steps": 10000
+    }
+  },
+  "mla": {
+    "mla_interval": 4,
+    "latent_tokens": 64,
+    "latent_hidden_size": 512
+  },
+  "training": {
+    "micro_batch_size": 4,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 2e-4,
+    "weight_decay": 0.1,
+    "warmup_steps": 2000,
+    "max_steps": 100000,
+    "multi_token_prediction": 4,
+    "mixed_precision": "fp16"
+  }
+}
