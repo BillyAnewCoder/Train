@@ -1,0 +1,39 @@
+{
+  "model": {
+    "vocab_size": 32000,
+    "hidden_size": 4096,
+    "num_layers": 32,
+    "num_attention_heads": 32,
+    "intermediate_size": 11008,
+    "max_position_embeddings": 4096,
+    "layer_norm_eps": 1e-6,
+    "dropout": 0.1,
+    "activation_function": "gelu"
+  },
+  "moe": {
+    "num_experts": 64,
+    "top_k": 2,
+    "expert_hidden_size": 2048,
+    "gate_temperature": 1.0,
+    "gate_temperature_schedule": {
+      "initial": 1.0,
+      "final": 0.5,
+      "steps": 10000
+    },
+    "load_balance_loss_coeff": 0.01,
+    "expert_capacity_factor": 1.25
+  },
+  "mla": {
+    "latent_tokens": 128,
+    "latent_hidden_size": 512,
+    "mla_interval": 4,
+    "compression_ratio": 8
+  },
+  "training": {
+    "batch_size": 32,
+    "micro_batch_size": 4,
+    "gradient_accumulation_steps": 8,
+    "max_tokens_per_batch": 131072,
+    "multi_token_prediction": 4
+  }
+}
